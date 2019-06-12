@@ -6,20 +6,28 @@ import Form from '../components/Form';
 
 import {Actions} from 'react-native-router-flux'; 
 
-export default class Login extends Component {
+export default class LoginT extends Component {
 
     signup(){
-        Actions.signup()
+        Actions.signup();
+    }
+
+    loginG(){
+        Actions.loginG();
     }
 
     render(){
         return(
             <View style={styles.container}>
-                <Logo />
+                <Logo type="Login as Tourist"/>
                 <Form type="Login"/>
                 <View style={styles.signupTextCont}>
                     <Text style={styles.signupText}>Don't have an account yet?</Text>
                     <TouchableOpacity onPress={this.signup}><Text style={styles.signupbutton}> SignUp</Text></TouchableOpacity>
+                </View>
+                <View style={styles.signupTextContOther}>
+                    <Text style={styles.signupText}>Signed up as a Guide?</Text>
+                    <TouchableOpacity onPress={this.loginG}><Text style={styles.signupbutton}> SignIn</Text></TouchableOpacity>
                 </View>
             </View>
         )
@@ -37,7 +45,12 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         alignItems: 'flex-end',
         justifyContent: 'center',
-        paddingVertical: 16,
+        flexDirection: 'row',
+        marginBottom: 25  
+    },
+    signupTextContOther: {
+        flexGrow: 1,
+        justifyContent: 'center',
         flexDirection: 'row'   
     },
     signupText: {
